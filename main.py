@@ -47,8 +47,7 @@ def download_and_prepare_dataset():
     # 移动文件到目标目录
     source_train_images = os.path.join(extract_dir, 'images/train2017')
     source_train_labels = os.path.join(extract_dir, 'labels/train2017')
-    source_val_images = os.path.join(extract_dir, 'images/val2017')
-    source_val_labels = os.path.join(extract_dir, 'labels/val2017')
+
     
     # 复制训练集
     if os.path.exists(source_train_images):
@@ -57,14 +56,6 @@ def download_and_prepare_dataset():
     if os.path.exists(source_train_labels):
         for file in os.listdir(source_train_labels):
             shutil.copy(os.path.join(source_train_labels, file), target_dirs['train/labels'])
-    
-    # 复制验证集
-    if os.path.exists(source_val_images):
-        for file in os.listdir(source_val_images):
-            shutil.copy(os.path.join(source_val_images, file), target_dirs['val/images'])
-    if os.path.exists(source_val_labels):
-        for file in os.listdir(source_val_labels):
-            shutil.copy(os.path.join(source_val_labels, file), target_dirs['val/labels'])
     
     # 清理临时文件
     if os.path.exists(extract_dir):
